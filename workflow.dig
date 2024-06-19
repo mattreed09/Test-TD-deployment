@@ -1,0 +1,17 @@
+
++run_python:
+  py>: firstscript.main
+  verbose: true
+  _env:
+    TD_API_SERVER: "https://api.eu01.treasuredata.com"
+  docker:
+    image: "digdag/digdag-python:3.9"
+
++cleaning:
+  _parallel: True
+
+  +clean_reviews:
+    td>: do_one.sql
+
+  +clean_survey_responses:
+    td>: do_two.sql
